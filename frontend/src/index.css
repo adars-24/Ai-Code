@@ -70,6 +70,8 @@ body {
   flex-direction: column;
   padding: 20px 12px;
   flex-shrink: 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .sidebar-logo {
@@ -119,7 +121,21 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  flex: 1;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.sidebar-footer {
+  border-top: 1px solid var(--sidebar-border);
+  padding-top: 12px;
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .nav-item {
