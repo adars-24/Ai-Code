@@ -183,11 +183,7 @@ body {
   color: rgba(255,255,255,0.7);
 }
 
-.sidebar-footer {
-  border-top: 1px solid var(--sidebar-border);
-  padding-top: 16px;
-  margin-top: 16px;
-}
+
 
 .provider-toggle {
   padding: 8px 12px;
