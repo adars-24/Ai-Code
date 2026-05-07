@@ -94,6 +94,7 @@ const App = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [tokensUsed, setTokensUsed] = useState<number>(0);
   const [historyRefresh, setHistoryRefresh] = useState<number>(0);
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 
   // Show auth page if not logged in
   if (!isAuthenticated) {
@@ -425,12 +426,125 @@ const App = () => {
                     fontWeight: 600,
                   }}
                 >
-✓ {provider === "gemini" ? "Gemini" : provider === "groq" ? "Groq (Llama 3)" : "GPT-4o mini"}
+                  ✓{" "}
+                  {provider === "gemini"
+                    ? "Gemini"
+                    : provider === "groq"
+                      ? "Groq (Llama 3)"
+                      : "GPT-4o mini"}
                 </span>
               )}
             </div>
             {renderResult()}
           </div>
+        </div>
+      </div>
+      {/* Mobile bottom nav */}
+      <div className="mobile-bottom-nav">
+        <div className="mobile-nav-items">
+          {TABS.map((tab) => (
+            <button
+              key={tab.id}
+              className={`mobile-nav-item ${activeTool === tab.id ? "active" : ""}`}
+              onClick={() => handleToolChange(tab.id)}
+            >
+              <span className="mobile-nav-icon">{tab.icon}</span>
+              {tab.label}
+            </button>
+          ))}
+          <button
+            className="mobile-nav-item"
+            onClick={() => setDrawerOpen(true)}
+          >
+            <span className="mobile-nav-icon">⚙️</span>
+            More
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile drawer overlay */}
+      {drawerOpen && (
+        <div
+          className="mobile-drawer-overlay"
+          onClick={() => setDrawerOpen(false)}
+          style={{ display: drawerOpen ? "block" : "none" }}
+        />
+      )}
+
+      {/* Mobile drawer — provider + history */}
+      <div className={`mobile-drawer ${drawerOpen ? "open" : ""}`}>
+        <div className="mobile-drawer-handle" />
+
+        <div className="mobile-drawer-title">AI Provider</div>
+        <div className="mobile-provider-row">
+          {(["gemini", "groq", "openai"] as AIProvider[]).map((p) => (
+            <button
+              key={p}
+              className={`mobile-provider-btn ${provider === p ? "active" : ""}`}
+              onClick={() => {
+                setProvider(p);
+                setDrawerOpen(false);
+              }}
+            >
+              {p === "gemini" ? "Gemini" : p === "groq" ? "Groq" : "GPT"}
+            </button>
+          ))}
+        </div>
+
+        <div className="mobile-drawer-title">Recent History</div>
+        <HistoryPanel
+          onSelect={(item) => {
+            handleHistorySelect(item);
+            setDrawerOpen(false);
+          }}
+          refreshTrigger={historyRefresh}
+        />
+
+        {tokensUsed > 0 && (
+          <div
+            style={{
+              textAlign: "center",
+              fontSize: "11px",
+              color: "var(--text-sidebar)",
+              marginTop: "12px",
+              paddingTop: "12px",
+              borderTop: "1px solid #2d3148",
+            }}
+          >
+            {tokensUsed.toLocaleString()} tokens used
+          </div>
+        )}
+
+        <div
+          style={{
+            borderTop: "1px solid #2d3148",
+            marginTop: "12px",
+            paddingTop: "12px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <div className="sidebar-avatar">
+              {user ? getInitials(user.name) : "?"}
+            </div>
+            <span
+              style={{ fontSize: "13px", color: "#e2e8f0", fontWeight: 600 }}
+            >
+              {user?.name}
+            </span>
+          </div>
+          <button
+            className="sidebar-logout-btn"
+            style={{ width: "auto" }}
+            onClick={() => {
+              logout();
+              setDrawerOpen(false);
+            }}
+          >
+            🚪 Logout
+          </button>
         </div>
       </div>
     </div>
