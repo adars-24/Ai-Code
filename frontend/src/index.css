@@ -78,25 +78,25 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 12px;
-  margin-bottom: 20px;
+  padding: 4px 12px;
+  margin-bottom: 12px;
   flex-shrink: 0;
 }
 
 .logo-icon {
-  width: 32px;
+  width: 28px;
   height: 32px;
   background: var(--accent);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 14px;
   flex-shrink: 0;
 }
 
 .logo-text {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.2;
@@ -109,13 +109,13 @@ body {
 }
 
 .sidebar-section-label {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
   color: var(--text-sidebar);
   text-transform: uppercase;
   letter-spacing: 0.8px;
   padding: 0 12px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   flex-shrink: 0;
 }
 
@@ -130,11 +130,11 @@ body {
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
+  gap: 8px;
+  padding: 7px 10px;  /* reduced from 10px 12px */
   border-radius: 8px;
   color: var(--text-sidebar);
-  font-size: 13px;
+  font-size: 12px;    /* reduced from 13px */
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
@@ -155,16 +155,16 @@ body {
 }
 
 .nav-icon {
-  font-size: 16px;
-  width: 20px;
+  font-size: 14px;
+  width: 18px;
   text-align: center;
   flex-shrink: 0;
 }
 
 .nav-desc {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-sidebar);
-  margin-top: 1px;
+  margin-top: 0px;
   line-height: 1;
 }
 
@@ -174,16 +174,16 @@ body {
 
 /* Provider toggle */
 .provider-toggle {
-  padding: 8px 12px;
+  padding: 6px 12px;
 }
 
 .provider-label {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
   color: var(--text-sidebar);
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   display: block;
 }
 
@@ -194,12 +194,12 @@ body {
 
 .toggle-btn {
   flex: 1;
-  padding: 6px 4px;
+  padding: 5px 4px;
   border-radius: 6px;
   border: 1px solid var(--sidebar-border);
   background: none;
   color: var(--text-sidebar);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.15s;
@@ -221,9 +221,9 @@ body {
 /* Takes remaining space and scrolls internally */
 .history-panel {
   padding: 0 4px;
-  margin-top: 12px;
+  margin-top: 8px;
   flex: 1;           /* takes remaining space between nav and footer */
-  min-height: 0;     /* critical — allows flex child to shrink below content size */
+  min-height: 80px;     /* critical — allows flex child to shrink below content size */
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -281,7 +281,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 8px;
+  padding: 5px 8px;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.15s;
@@ -370,19 +370,19 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 12px;
-  margin-bottom: 4px;
+  padding: 4px 12px;
+  margin-bottom: 2px;
 }
 
 .sidebar-avatar {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   background: var(--accent);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   color: white;
   flex-shrink: 0;
@@ -401,10 +401,10 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 12px;
+  padding: 5px 12px;
   border-radius: 6px;
   color: var(--danger);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   cursor: pointer;
   border: none;
